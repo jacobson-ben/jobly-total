@@ -1,5 +1,4 @@
 import {Switch, Route, Redirect} from "react-router-dom"
-import { useState } from "react"
 import Home from "./home/Home"
 import Login from "./auth/Login"
 import Signup from "./auth/Signup"

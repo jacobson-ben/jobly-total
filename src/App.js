@@ -1,6 +1,6 @@
 import './App.css';
 import Routes from "./Routes"
-import {decodeToken, useJwt} from "react-jwt"
+import { decodeToken } from "react-jwt"
 import {useState} from "react"
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from "./nav/NavBar"
