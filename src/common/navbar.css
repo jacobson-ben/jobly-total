@@ -1,0 +1,21 @@
+.NavBar {
+  background-color: #3b5998;
+  font-weight: bold;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.NavBar a {
+  text-align: center;
+  width: 10em;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+.NavBar a:hover {
+  color: white !important;
+}
+.NavBar a.active {
+  font-weight: bold;
+  color: black;
+}

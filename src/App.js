@@ -1,30 +1,35 @@
 import './App.css';
 import Routes from "./Routes"
 import { decodeToken } from "react-jwt"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import { BrowserRouter } from 'react-router-dom';
-import NavBar from "./common/NavBar"
+import NavBar from "./common/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserContext from "./auth/UserContext";
+import JoblyApi from './JoblyAPI';
 
 function App() {
-  const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc")
+  const [token, setToken] = useState(null)
   const user = token ? decodeToken(token) : null;
-
+  console.log('token', token);
+  
+  //pass down setter function instead of wrapper function. 
   function updateToken(token) {
-    setToken(token);
+    setToken(t => token);
   }
 
   function removeToken() {
     setToken(null);
   }
 
-
   return (
     <BrowserRouter>
-    <div className="App">
-      <NavBar user={user}/>
-      <Routes updateToken={updateToken} removeToken={removeToken} user={user}/>
-    </div>
+      <UserContext.Provider value={{ user }}>
+      <div className="App">
+        <NavBar />
+        <Routes updateToken={updateToken} removeToken={removeToken} />
+      </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function SignupForm({authentication, type}) {
-  const initialState = {username:"", password:"", firstName: "", lastName: "", email:""}
-  console.log(type)
+function AuthForm({authentication, type}) {
+  const initialState = (type === 'signup' ?
+  {username:"", password:"", firstName: "", lastName: "", email:""} 
+  : {username: "", password: ""});
+  const history = useHistory();
   const [formData, setFormData] = useState(initialState)
 
   function handleChange(evt) {
@@ -14,28 +17,28 @@ function SignupForm({authentication, type}) {
     evt.preventDefault();
     authentication({ ...formData });
     setFormData(initialState);
+    history.push("/");
   }
   
   function signUpOrLogin() {
-    console.log(type)
     if(type === 'signup') {
       return (
         <div>
-        <label for="firstName">First Name</label>
+        <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
         />
-        <label for="lastName">Last Name</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           id="lastName"
           name="lastName"
-          value={formData.username}
+          value={formData.lastName}
           onChange={handleChange}
         />
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
@@ -50,25 +53,26 @@ function SignupForm({authentication, type}) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           name="username"
           value={formData.username}
           onChange={handleChange}
         />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
+          type="password"
           value={formData.password}
           onChange={handleChange}
         />
-        {signUpOrLogin()}
+        { signUpOrLogin() }
         <button>Submit</button>
       </form>
     </div>
   )
 }
 
-export default SignupForm;
+export default AuthForm;

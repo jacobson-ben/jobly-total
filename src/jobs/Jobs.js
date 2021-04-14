@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import JoblyApi from '../JoblyAPI';
 import SearchForm from '../common/SearchForm'
 import JobCard from './JobCard';
+import {useContext} from 'react';
+import UserContext from '../auth/UserContext';
 
 
-function Jobs({user}) {
+function Jobs() {
   const [jobs, setJobs] = useState([]);
-
+  const { user } = useContext(UserContext);
+  
   useEffect(function showJobsOnLoad() {
     searchJobs();
   }, []);

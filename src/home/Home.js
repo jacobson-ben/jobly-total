@@ -1,7 +1,11 @@
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {useContext} from 'react';
+import UserContext from '../auth/UserContext';
 
-function Home({user}) {
-  
+
+function Home() {
+  const { user } = useContext(UserContext);
+
   function loginStatus() {
     if(user) {
       return (

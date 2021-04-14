@@ -1,8 +1,8 @@
-import SignupForm from './SignupForm'
+import AuthForm from './AuthForm'
 import JoblyApi from '../JoblyAPI'
 
 function Login({updateToken}) {
-
+    
   async function login(formData) {
     let response = await JoblyApi.login(formData);
     updateToken(response)
@@ -11,7 +11,7 @@ function Login({updateToken}) {
   return (
     <div>
       <h1>Login</h1>
-      <SignupForm authentication={login} type="login"/>
+      <AuthForm authentication={login} type="login"/>
     </div>
   )
 }

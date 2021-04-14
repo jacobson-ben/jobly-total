@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import JoblyApi from '../JoblyAPI';
 import SearchForm from '../common/SearchForm'
 import CompanyCard from './CompanyCard';
+import {useContext} from 'react';
+import UserContext from '../auth/UserContext';
 
-
-function Companies({user}) {
+function Companies() {
   const [companies, setCompanies] = useState([]);
-
+  const { user } = useContext(UserContext);
+  
   useEffect(function showCompaniesOnLoad() {
     searchCompanies();
   }, []);

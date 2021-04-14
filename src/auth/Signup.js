@@ -1,4 +1,4 @@
-import SignupForm from './SignupForm'
+import AuthForm from './AuthForm'
 import JoblyApi from '../JoblyAPI'
 
 function Signup({updateToken}) {
@@ -11,7 +11,7 @@ function Signup({updateToken}) {
   return (
     <div>
       <h1>Signup</h1>
-      <SignupForm authentication={register} type={"signup"}/>
+      <AuthForm authentication={register} type={"signup"}/>
     </div>
   )
 }
