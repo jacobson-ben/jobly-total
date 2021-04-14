@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-function CompanySearchForm({searchCompanies}) {
-  const [formData, setFormData] = useState('');
+function SearchForm({search, name}) {
+  const initialState = {[name]: ""};
+  const [formData, setFormData] = useState(initialState);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -10,23 +11,23 @@ function CompanySearchForm({searchCompanies}) {
   
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchCompanies({ ...formData });
-    setFormData('');
+    search({ ...formData });
+    setFormData(initialState);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}> 
       <input
-        name="name"
+        name={name}
         placeholder="Enter search term..."
-        value={formData.name}
+        value={formData[name]}
         onChange={handleChange}
       />
-      <button> Submit </button>
+      <button>Submit</button>
     </form>
     </div>
   )
 }
 
-export default CompanySearchForm;
+export default SearchForm;

@@ -1,0 +1,16 @@
+.card {
+  margin: 10px;
+  color: black;
+}
+
+.card-container:hover {
+  text-decoration: none;
+}
+
+.job-icon {
+  max-height: 40px;
+  max-width: 60px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

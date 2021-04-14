@@ -3,7 +3,8 @@ import Routes from "./Routes"
 import { decodeToken } from "react-jwt"
 import {useState} from "react"
 import { BrowserRouter } from 'react-router-dom';
-import NavBar from "./nav/NavBar"
+import NavBar from "./common/NavBar"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc")

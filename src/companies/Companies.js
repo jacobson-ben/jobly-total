@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import JoblyApi from '../JoblyAPI';
-import CompanySearchForm from './CompanySearchForm'
+import SearchForm from '../common/SearchForm'
 import CompanyCard from './CompanyCard';
 
 
 function Companies({user}) {
   const [companies, setCompanies] = useState([]);
-
-  // useEffect, calls searchCompanies
-  // updates on initial load of page
 
   useEffect(function showCompaniesOnLoad() {
     searchCompanies();
@@ -21,8 +18,8 @@ function Companies({user}) {
   
   return (
     <div className="companies">
-      <CompanySearchForm searchCompanies={searchCompanies} />
-      { companies.map(c => ( <CompanyCard company={c} /> )) }
+      <SearchForm search={searchCompanies} name={"name"} />
+      { companies.map(c => ( <CompanyCard key={c.handle} company={c} /> )) }
     </div>
   )
 }
