@@ -2,9 +2,9 @@ import {useContext} from 'react';
 import UserContext from './UserContext';
 import {Route, Redirect} from 'react-router-dom'
 
-function PrivateRoute (path) {
+function PrivateRoute (props) {
   const { user } = useContext(UserContext)
-  console.log(path)
+  console.log(props)
   
   if(!user) {
     return (
@@ -13,7 +13,7 @@ function PrivateRoute (path) {
   }
 
   return (
-    <Route exact path={path.path}>{path.children}</Route>
+    <Route exact={props.exact} path={props.path}>{props.children}</Route>
   )
 }
 
