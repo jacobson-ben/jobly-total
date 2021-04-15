@@ -4,7 +4,6 @@ import {Route, Redirect} from 'react-router-dom'
 
 function PrivateRoute (props) {
   const { user } = useContext(UserContext)
-  console.log(props)
   
   if(!user) {
     return (

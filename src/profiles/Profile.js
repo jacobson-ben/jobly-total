@@ -6,13 +6,11 @@ import ProfileForm from './ProfileForm';
 function Profile() {
   const { user } = useContext(UserContext);
   const [userData, setUserData] = useState(null)
-  // const [formSubmitted, setFormSubmitted] = useState(false);
   
   useEffect( function getUserData() {
     async function requestUserData() {
       const res = await JoblyApi.getUser(user.username);
       setUserData(userData => res);
-      // return setFormSubmitted(false)
     }
    requestUserData();
   }, [])
@@ -30,7 +28,6 @@ function Profile() {
       <ProfileForm 
         userData={userData} 
         updateUser={updateUser} 
-        // formSubmitted={formSubmitted}
       />
     </div>
   )

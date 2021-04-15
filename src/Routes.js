@@ -18,7 +18,7 @@ function Routes({ updateToken, removeToken }) {
         <Route exact path="/signup"><Signup updateToken={updateToken}/></Route>
         <Route exact path="/login"><Login updateToken={updateToken}/></Route>
         <PrivateRoute exact path="/companies"><Companies/></PrivateRoute>
-        <PrivateRoute exact path="/companies/:handle"><Companies/></PrivateRoute>
+        <PrivateRoute exact path="/companies/:handle"><Company/></PrivateRoute>
         <PrivateRoute exact path="/jobs"><Jobs/></PrivateRoute>
         <PrivateRoute exact path="/profile"><Profile/></PrivateRoute>
         <Redirect to="/"/>

@@ -5,7 +5,6 @@ import './navbar.css'
 
 function NavBar() {
   const { user } = useContext(UserContext);
-  console.log(user)
   return (
     <nav className="NavBar">
       <NavLink exact to="/">Jobly</NavLink>

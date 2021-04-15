@@ -3,7 +3,7 @@ import './CompanyCard.css'
 
 function CompanyCard({company}) {
 
-  const {handle, description, logoUrl, name} = company
+  const {handle, description, name} = company
   return (
     <Link to={`companies/${handle}`} className="card-container"> 
       <div className="card"> 

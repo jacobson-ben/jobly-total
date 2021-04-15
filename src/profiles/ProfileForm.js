@@ -2,7 +2,6 @@ import { useState } from 'react';
 import '../form.css';
 
 function ProfileForm({ userData, updateUser}) {
-  console.log(userData);
 
   const initialState = {
     firstName: userData.firstName,
@@ -13,8 +12,6 @@ function ProfileForm({ userData, updateUser}) {
   
   
   const [formData, setFormData] = useState(initialState)
-  
-  console.log(formData);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -24,8 +21,7 @@ function ProfileForm({ userData, updateUser}) {
   function handleSubmit(evt) {
     evt.preventDefault();
     updateUser({...formData});
-    setFormData(initialState);
-    // formSubmitted(true);
+    setFormData({...formData, password:""});
   }
 
   return (
