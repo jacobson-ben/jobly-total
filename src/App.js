@@ -11,15 +11,23 @@ import JoblyApi from './JoblyAPI';
 function App() {
   const [token, setToken] = useState(null)
   const user = token ? decodeToken(token) : null;
-  console.log('token', token);
+  
+  useEffect(function checkToken() {
+    if(localStorage.getItem('token')) {
+      const lToken = localStorage.getItem('token');
+      setToken(lToken)
+    }
+  }, [])
   
   //pass down setter function instead of wrapper function. 
   function updateToken(token) {
     setToken(t => token);
+    localStorage.setItem('token', token)
   }
 
   function removeToken() {
     setToken(null);
+    localStorage.removeItem('token')
   }
 
   return (

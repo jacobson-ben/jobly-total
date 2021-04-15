@@ -9,6 +9,7 @@ import Profile from "./profiles/Profile"
 import Company from "./companies/Company"
 import {useContext} from 'react';
 import UserContext from './auth/UserContext';
+import PrivateRoute from './auth/PrivateRoute';
 
 function Routes({ updateToken, removeToken }) {
   return (
@@ -18,10 +19,10 @@ function Routes({ updateToken, removeToken }) {
         <Route exact path="/logout"><Logout removeToken={removeToken}/></Route>
         <Route exact path="/signup"><Signup updateToken={updateToken}/></Route>
         <Route exact path="/login"><Login updateToken={updateToken}/></Route>
-        <Route exact path="/companies"><Companies/></Route>
-        <Route exact path="/companies/:handle"><Company/></Route>
-        <Route exact path="/jobs"><Jobs/></Route>
-        <Route exact path="/profile"><Profile/></Route>
+        <PrivateRoute exact path="/companies"><Companies/></PrivateRoute>
+        <PrivateRoute exact path="/companies/:handle"><Companies/></PrivateRoute>
+        <PrivateRoute exact path="/jobs"><Jobs/></PrivateRoute>
+        <PrivateRoute exact path="/profile"><Profile/></PrivateRoute>
         <Redirect to="/"/>
       </Switch>
     </div>
