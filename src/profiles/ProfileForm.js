@@ -1,29 +1,44 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import '../form.css';
 
-function AuthForm({authentication, type}) {
-  const initialState = (type === 'signup' ?
-  {username:"", password:"", firstName: "", lastName: "", email:""} 
-  : {username: "", password: ""});
-  const history = useHistory();
+function ProfileForm({ userData, updateUser}) {
+  console.log(userData);
+
+  const initialState = {
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    email: userData.email,
+    password: ""
+  }
+  
+  
   const [formData, setFormData] = useState(initialState)
+  
+  console.log(formData);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData( fData => ({ ...fData, [name]: value }));
   }
-  
-  async function handleSubmit(evt) {
+
+  function handleSubmit(evt) {
     evt.preventDefault();
-    await authentication({ ...formData });
+    updateUser({...formData});
     setFormData(initialState);
-    history.push("/");
+    // formSubmitted(true);
   }
-  
-  function signUpOrLogin() {
-    if(type === 'signup') {
-      return (
-        <div>
+
+  return (
+    <div>
+      <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          name="username"
+          value={userData.username}
+          onChange={handleChange}
+          disabled
+        />
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
@@ -45,21 +60,6 @@ function AuthForm({authentication, type}) {
           value={formData.email}
           onChange={handleChange}
           />
-        </div>
-        )
-      }
-    }
-  
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
         <label htmlFor="password">Password</label>
         <input
           id="password"
@@ -67,12 +67,11 @@ function AuthForm({authentication, type}) {
           type="password"
           value={formData.password}
           onChange={handleChange}
-        />
-        { signUpOrLogin() }
+          />
         <button>Submit</button>
       </form>
     </div>
   )
 }
 
-export default AuthForm;
+export default ProfileForm;

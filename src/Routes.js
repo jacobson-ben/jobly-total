@@ -7,8 +7,6 @@ import Companies from "./companies/Companies"
 import Jobs from "./jobs/Jobs"
 import Profile from "./profiles/Profile"
 import Company from "./companies/Company"
-import {useContext} from 'react';
-import UserContext from './auth/UserContext';
 import PrivateRoute from './auth/PrivateRoute';
 
 function Routes({ updateToken, removeToken }) {
