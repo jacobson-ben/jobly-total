@@ -21,11 +21,15 @@ psql jobly < jobly.sql
 npm start
 ```
 
+## Usage
+1. Register or Login
+2. Start searching for a job!
+
 ## Features
 - User registration utilizing UserContext and localeStorage token authentication.
 - Filtering through companies and the jobs they offer based on form input state.
 - Modern use of React hooks such as useState, useContext, useEffect, and some occasional prop drilling when called for. 
-- Private accounts and custom 404 page. 
+- Private accounts, profile editing, and custom 404 page. 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
